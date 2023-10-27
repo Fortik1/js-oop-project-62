@@ -1,11 +1,11 @@
 {
-  "name": "js-oop-project-62",
+  "name": "@hexlet/code",
   "version": "1.0.0",
   "type": "module",
   "description": "[![Actions Status](https://github.com/Fortik1/js-oop-project-62/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Fortik1/js-oop-project-62/actions)",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest  --coverage"
   },
   "repository": {
     "type": "git",

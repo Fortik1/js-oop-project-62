@@ -1,3 +1,3 @@
 import app from './src/app.js';
 
-app();
+export default app;
