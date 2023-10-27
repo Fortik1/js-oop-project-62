@@ -121,3 +121,18 @@ test('checkSizeArray', () => {
   expect(array.isValid([''])).toBeFalsy();
   expect(array.isValid()).toBeFalsy();
 }) 
+
+test('checkObjectValid', () => {
+  const object = schema.object();
+
+  object.shape({
+    name: schema.string().required(),
+    age: schema.number().positive(),
+  })
+
+  expect(object.isValid({ name: 'kolya', age: 20 })).toBeTruthy();
+  expect(object.isValid({ name: 'kolya', age: null })).toBeTruthy();
+
+  expect(object.isValid({ name: '', age: null })).toBeFalsy();
+  expect(object.isValid({ name: 'kolya', age: -5 })).toBeFalsy();
+})

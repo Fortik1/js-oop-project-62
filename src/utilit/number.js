@@ -7,7 +7,7 @@ const checkRange = (minNum, maxNum) => (num) => {
 const params = {
   main: () => true,
   required: (num) => typeof num === 'number',
-  positive: (num) => num > 0,
+  positive: (num) => num > 0 || num === null,
   range: checkRange,
 };
 
