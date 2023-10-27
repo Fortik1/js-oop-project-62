@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Fortik1/js-oop-project-62/issues"
   },
-  "homepage": "https://github.com/Fortik1/js-oop-project-62#readme"
+  "homepage": "https://github.com/Fortik1/js-oop-project-62#readme",
+  "devDependencies": {
+    "eslint": "^8.52.0"
+  }
 }
