@@ -1,0 +1,20 @@
+{
+  "name": "js-oop-project-62",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "[![Actions Status](https://github.com/Fortik1/js-oop-project-62/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Fortik1/js-oop-project-62/actions)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fortik1/js-oop-project-62.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fortik1/js-oop-project-62/issues"
+  },
+  "homepage": "https://github.com/Fortik1/js-oop-project-62#readme"
+}
