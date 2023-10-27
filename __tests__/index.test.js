@@ -92,3 +92,32 @@ test('checkRangeNumber', () => {
   expect(range.isValid(-6)).toBeFalsy();
   expect(range.isValid(3)).toBeFalsy();
 });
+
+test('isArrayDefault', () => {
+  const array = schema.array();
+
+  expect(array.isValid(null)).toBeTruthy();
+  expect(array.isValid()).toBeTruthy();
+  expect(array.isValid([])).toBeTruthy();
+})
+
+test('checkRequiredArray', () => {
+  const array = schema.array().required();
+
+  expect(array.isValid([])).toBeTruthy();
+  expect(array.isValid(['true'])).toBeTruthy();
+
+  expect(array.isValid()).toBeFalsy();
+})
+
+test('checkSizeArray', () => {
+  const array = schema.array().sizeof(2);
+  const arraySizeZero = schema.array().sizeof();
+
+  expect(arraySizeZero.isValid([''])).toBeFalsy();
+
+  expect(array.isValid(['', ''])).toBeTruthy();
+
+  expect(array.isValid([''])).toBeFalsy();
+  expect(array.isValid()).toBeFalsy();
+}) 
