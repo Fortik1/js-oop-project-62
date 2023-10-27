@@ -1,5 +1,5 @@
-import { test, expect } from "@jest/globals";
-import Validator from "../src/app";
+import { test, expect } from '@jest/globals';
+import Validator from '../src/app';
 
 const schema = new Validator();
 
@@ -9,7 +9,7 @@ test('checkValidString', () => {
   expect(checkString.isValid('')).toBeTruthy();
   expect(checkString.isValid(null)).toBeTruthy();
   expect(checkString.isValid(undefined)).toBeTruthy();
-})
+});
 
 test('checkValidStringRequired', () => {
   const checkRequired = schema.string().required();
@@ -19,4 +19,4 @@ test('checkValidStringRequired', () => {
   expect(checkRequired.isValid(null)).toBeFalsy();
   expect(checkRequired.isValid('str')).toBeTruthy();
   expect(checkRequired.isValid('is valid string')).toBeTruthy();
-})
+});

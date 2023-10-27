@@ -1,7 +1,7 @@
 const params = {
   main: () => true,
-  required: (str) => typeof str === 'string' && str !== '' ? true : false,
-}
+  required: (str) => (!!(typeof str === 'string' && str !== '')),
+};
 
 export default class String {
   constructor(isValidParams = params.main) {

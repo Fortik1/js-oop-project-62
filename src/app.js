@@ -1,4 +1,4 @@
-import String from "./utilit/string.js";
+import String from './utilit/string.js';
 
 export default class Validator {
   string() {
