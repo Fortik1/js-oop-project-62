@@ -1,13 +1,13 @@
 const checkContains = (checkStr = '') => (str) => {
   const checkValidStr = checkStr;
   return str.includes(checkValidStr);
-}
+};
 
 const checkMinLength = (lengthStr = 0) => (str = '') => {
   if (str === '') return false;
   const minLength = lengthStr;
   return str.length >= minLength;
-}
+};
 
 const params = {
   main: () => true,

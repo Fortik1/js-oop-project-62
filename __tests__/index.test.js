@@ -24,7 +24,7 @@ test('checkValidStringRequired', () => {
 
 test('checkValidStringContains', () => {
   const string = schema.string();
-  const expected1 = string.contains('World').isValid('Hello, World!'); 
+  const expected1 = string.contains('World').isValid('Hello, World!');
   const expected2 = string.contains('Hello').isValid('Hello, World!');
   const expected3 = string.contains('').isValid('Hello, World!');
   const expected4 = string.contains().isValid('Hello, World!');
@@ -38,7 +38,7 @@ test('checkValidStringContains', () => {
 
   expect(containsFaild.isValid('Fail')).toBeFalsy();
   expect(containsFaild.isValid('Hello')).toBeFalsy();
-})
+});
 
 test('checkMinLength', () => {
   const check = schema.string().minLength(5);
@@ -50,7 +50,7 @@ test('checkMinLength', () => {
   const defaultLength = schema.string().minLength();
 
   expect(defaultLength.isValid('TestSucces')).toBeTruthy();
-})
+});
 
 test('checkDefaul', () => {
   const number = schema.number();
@@ -59,8 +59,7 @@ test('checkDefaul', () => {
   expect(number.isValid(NaN)).toBeTruthy();
   expect(number.isValid(null)).toBeTruthy();
   expect(number.isValid()).toBeTruthy();
-
-})
+});
 
 test('checkRequiredNumber', () => {
   const required = schema.number().required();
@@ -72,7 +71,7 @@ test('checkRequiredNumber', () => {
   expect(required.isValid(null)).toBeFalsy();
   expect(required.isValid()).toBeFalsy();
   expect(required.isValid('')).toBeFalsy();
-})
+});
 
 test('checkPositiveNumber', () => {
   const positive = schema.number().positive();
@@ -81,7 +80,7 @@ test('checkPositiveNumber', () => {
 
   expect(positive.isValid(-10)).toBeFalsy();
   expect(positive.isValid(0)).toBeFalsy();
-})
+});
 
 test('checkRangeNumber', () => {
   const range = schema.number().range(-5, 2);
@@ -92,4 +91,4 @@ test('checkRangeNumber', () => {
 
   expect(range.isValid(-6)).toBeFalsy();
   expect(range.isValid(3)).toBeFalsy();
-})
+});
