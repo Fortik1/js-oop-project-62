@@ -15,6 +15,7 @@ test('checkValidStringRequired', () => {
   const checkRequired = schema.string().required();
 
   expect(checkRequired.isValid('')).toBeFalsy();
+  expect(checkRequired.isValid()).toBeFalsy();
   expect(checkRequired.isValid(undefined)).toBeFalsy();
   expect(checkRequired.isValid(null)).toBeFalsy();
   expect(checkRequired.isValid('str')).toBeTruthy();
@@ -49,4 +50,46 @@ test('checkMinLength', () => {
   const defaultLength = schema.string().minLength();
 
   expect(defaultLength.isValid('TestSucces')).toBeTruthy();
+})
+
+test('checkDefaul', () => {
+  const number = schema.number();
+
+  expect(number.isValid(5)).toBeTruthy();
+  expect(number.isValid(NaN)).toBeTruthy();
+  expect(number.isValid(null)).toBeTruthy();
+  expect(number.isValid()).toBeTruthy();
+
+})
+
+test('checkRequiredNumber', () => {
+  const required = schema.number().required();
+
+  expect(required.isValid(0)).toBeTruthy();
+  expect(required.isValid(2)).toBeTruthy();
+  expect(required.isValid(-2)).toBeTruthy();
+
+  expect(required.isValid(null)).toBeFalsy();
+  expect(required.isValid()).toBeFalsy();
+  expect(required.isValid('')).toBeFalsy();
+})
+
+test('checkPositiveNumber', () => {
+  const positive = schema.number().positive();
+
+  expect(positive.isValid(10)).toBeTruthy();
+
+  expect(positive.isValid(-10)).toBeFalsy();
+  expect(positive.isValid(0)).toBeFalsy();
+})
+
+test('checkRangeNumber', () => {
+  const range = schema.number().range(-5, 2);
+
+  expect(range.isValid(0)).toBeTruthy();
+  expect(range.isValid(-2)).toBeTruthy();
+  expect(range.isValid(2)).toBeTruthy();
+
+  expect(range.isValid(-6)).toBeFalsy();
+  expect(range.isValid(3)).toBeFalsy();
 })
