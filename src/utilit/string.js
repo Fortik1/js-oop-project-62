@@ -7,7 +7,7 @@ const checkContains = (checkStr = '') => (str) => {
 };
 
 const checkMinLength = (lengthStr = 0) => (str = '') => {
-  if (str === '') return false;
+  if (str === '' || typeof str !== 'string') return false;
   const minLength = lengthStr;
   return str.length >= minLength;
 };

@@ -38,8 +38,8 @@ test('checkValidStringContains', () => {
 
   expect(containsFaild.isValid('Fail')).toBeFalsy();
   expect(containsFaild.isValid('Hello')).toBeFalsy();
-  expect(containsFaild.isValid('')).toBeFalsy();
-  expect(containsFaild.isValid(null)).toBeFalsy();
+  expect(!containsFaild.isValid('')).toBe(true);
+  expect(!containsFaild.isValid(null)).toBeTruthy();
 });
 
 test('checkMinLength', () => {
