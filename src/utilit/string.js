@@ -1,6 +1,6 @@
 import Validator from "../app";
 
-const checkContains = (checkStr = '') => (str) => {
+const checkContains = (checkStr) => (str) => {
   if (typeof str !== 'string') return false;
   const checkValidStr = checkStr;
   return str.includes(checkValidStr);
@@ -33,11 +33,10 @@ export default class String {
   }
 
   test(name, par) {
-    const newFun = (par) => (str) => {
-      const param = par;
+    this.isValid = (str) => {
       const fn = Validator.fn.string.get(name);
-      return fn(str, param);
+      return fn(str, par);
     }
-    return new String(newFun(par));
+    return this;
   }
 }

@@ -1,3 +1,5 @@
+import Validator from "../app";
+
 export default class Object {
   isValid(obj) {
     for (const key in obj) {
@@ -9,13 +11,12 @@ export default class Object {
   shape(paramsCheck) {
     this.paramsCheck = paramsCheck;
   }
-  
+
   test(name, par) {
-    const newFun = (par) => (str) => {
-      const param = par;
+    this.isValid = (str) => {
       const fn = Validator.fn.string.get(name);
-      return fn(str, param);
+      return fn(str, par);
     }
-    return new String(newFun(par));
+    return this;
   }
 }

@@ -139,14 +139,24 @@ test('checkObjectValid', () => {
   expect(object.isValid({ name: 'kolya', age: -5 })).toBeFalsy();
 })
 
-// test('checkAddValid', () => {
-//   const fn = (value, start) => value.startsWith(start);
+test('checkAddValid', () => {
+  const fnString = (value, start) => value.startsWith(start);
+  const fnArr = (array, num) => array.includes(num);
+  const fnNumber = (numberCheck, crat) => numberCheck % crat === 0;
 
-//   const newSchema = schema.addValidator('string', 'startsWith', fn);
+  const newSchema = schema.addValidator('string', 'startsWith', fnString);
+  schema.addValidator('array', 'includes', fnArr);
+  schema.addValidator('number', 'crat', fnNumber);
 
-//   const check = newSchema.string().test('startsWith', 'H');
+  const check = newSchema.string().test('startsWith', 'H');
+  const checkArr = newSchema.array().test('includes', 2);
+  const checkNumber = newSchema.number().test('crat', 2);
 
-//   expect(check.isValid('Hexlet')).toBeTruthy();
+  expect(check.isValid('Hexlet')).toBeTruthy();
+  expect(checkArr.isValid([2])).toBeTruthy();
+  expect(checkNumber.isValid(2)).toBeTruthy();
 
-//   expect(check.isValid('exlet')).toBeFalsy();
-// })
+  expect(check.isValid('exlet')).toBeFalsy();
+  expect(checkArr.isValid([])).toBeFalsy();
+  expect(checkNumber.isValid(1)).toBeFalsy();
+})

@@ -7,7 +7,7 @@ export default class Validator {
   static fn = {
     string: new Map(),
     array: new Map(),
-    numver: new Map(),
+    number: new Map(),
     object: new Map(),
   }
 

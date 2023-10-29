@@ -1,39 +1,36 @@
+import Validator from "../app";
+
 const checkRange = (minNum, maxNum) => (num) => {
   const min = minNum;
   const max = maxNum;
   return num >= min && num <= max;
 };
 
-const params = {
-  main: () => true,
-  required: (num) => typeof num === 'number',
-  positive: (num) => num > 0 || num === null,
-  range: checkRange,
-};
-
 export default class Number {
-  constructor(validParams = params.main) {
-    this.isValid = validParams;
+  constructor() {
+    this.isValid = () => true;
   }
 
   required() {
-    return new Number(params.required);
+    this.isValid = (num) => typeof num === 'number';
+    return this;
   }
 
   positive() {
-    return new Number(params.positive);
+    this.isValid = (num) => num > 0 || num === null;
+    return this;
   }
 
   range(min, max) {
-    return new Number(params.range(min, max));
+    this.isValid = checkRange(min, max);
+    return this;
   }
 
   test(name, par) {
-    const newFun = (par) => (str) => {
-      const param = par;
-      const fn = Validator.fn.string.get(name);
-      return fn(str, param);
+    this.isValid = (str) => {
+      const fn = Validator.fn.number.get(name);
+      return fn(str, par);
     }
-    return new String(newFun(par));
+    return this;
   }
 }
