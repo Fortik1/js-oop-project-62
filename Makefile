@@ -6,3 +6,6 @@ lint-fix:
 
 test:
 	npm test
+
+install:
+	npm ci
