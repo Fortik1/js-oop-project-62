@@ -29,7 +29,7 @@ export default class String {
   }
 
   contains(str) {
-    return new String(params.contains(str));
+    this.isValid = params.contains(str);
   }
 
   minLength(lengthStr) {
