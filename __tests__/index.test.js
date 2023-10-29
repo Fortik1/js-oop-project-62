@@ -6,8 +6,8 @@ const schema = new Validator();
 test('checkValidString', () => {
   const checkString = schema.string();
 
-  expect(!checkString.isValid('')).toBeTruthy();
-  expect(!checkString.isValid(null)).toBe(true);
+  expect(checkString.isValid('')).toBeTruthy();
+  expect(checkString.isValid(null)).toBe(true);
   expect(checkString.isValid(undefined)).toBeTruthy();
 });
 
