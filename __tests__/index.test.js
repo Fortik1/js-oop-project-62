@@ -2,12 +2,12 @@ import { test, expect } from '@jest/globals';
 import Validator from '../src/app.js';
 
 test('checkValidString', () => {
-  const schema = new Validator();
-  const checkString = schema.string();
+  const v = new Validator();
+  const schema = v.string();
 
-  expect(checkString.isValid('')).toBeTruthy();
-  expect(checkString.isValid(null)).toBe(true);
-  expect(checkString.isValid(undefined)).toBeTruthy();
+  expect(schema.isValid('')).toBeTruthy();
+  expect(schema.isValid(null)).toBe(true);
+  expect(schema.isValid(undefined)).toBeTruthy();
 });
 
 test('checkValidStringRequired', () => {
