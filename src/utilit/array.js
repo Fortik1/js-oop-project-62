@@ -1,4 +1,4 @@
-import Validator from '../app';
+import Validator from '../app.js';
 
 const checkSizeArray = (sizeArr) => (arr = []) => {
   const size = sizeArr;

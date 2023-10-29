@@ -1,4 +1,4 @@
-import Validator from '../app';
+import Validator from '../app.js';
 
 const checkRange = (minNum, maxNum) => (num) => {
   const min = minNum;

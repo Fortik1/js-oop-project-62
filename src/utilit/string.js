@@ -1,4 +1,4 @@
-import Validator from '../app';
+import Validator from '../app.js';
 
 const checkContains = (checkStr) => (str) => {
   if (typeof str !== 'string') return false;

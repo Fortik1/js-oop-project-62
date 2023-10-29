@@ -1,9 +1,9 @@
-import Validator from '../app';
+import Validator from '../app.js';
 
-export default class Object {
+export default class CheckObject {
   isValid(obj) {
-    for (const key in obj) {
-      if (!this.paramsCheck[key].isValid(obj[key])) return false;
+    for (const [name, value] of Object.entries(obj)) {
+      if (!this.paramsCheck[name].isValid(value)) return false;
     }
     return true;
   }
