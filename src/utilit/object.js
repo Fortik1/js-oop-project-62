@@ -4,8 +4,10 @@ export default class CheckObject {
   }
 
   isValid(obj) {
-    for (const key in obj) {
-      if (!this.paramsCheck[key].isValid(obj[key])) return false;
+    if (obj === null || typeof obj !== 'object') return false;
+    
+    for (const [name, value] of Object.entries(obj)) {
+      if (!this.paramsCheck[name].isValid(value)) return false;
     }
     return true;
   }
