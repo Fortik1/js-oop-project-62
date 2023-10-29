@@ -1,5 +1,3 @@
-import Validator from '../app.js';
-
 const checkContains = (checkStr) => (str) => {
   if (typeof str !== 'string') return false;
   const checkValidStr = checkStr;
@@ -13,8 +11,9 @@ const checkMinLength = (lengthStr = 0) => (str = '') => {
 };
 
 export default class String {
-  constructor() {
+  constructor(fn) {
     this.isValid = () => true;
+    this.fn = fn;
   }
 
   required() {
@@ -34,7 +33,7 @@ export default class String {
 
   test(name, par) {
     this.isValid = (str) => {
-      const fn = Validator.fn.string.get(name);
+      const fn = this.fn.string.get(name);
       return fn(str, par);
     };
     return this;

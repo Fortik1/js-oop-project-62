@@ -1,13 +1,12 @@
-import Validator from '../app.js';
-
 const checkSizeArray = (sizeArr) => (arr = []) => {
   const size = sizeArr;
   return arr.length === size;
 };
 
 export default class ValidatorArray {
-  constructor() {
+  constructor(fn) {
     this.isValid = () => true;
+    this.fn = fn;
   }
 
   required() {
@@ -22,7 +21,7 @@ export default class ValidatorArray {
 
   test(name, par) {
     this.isValid = (str) => {
-      const fn = Validator.fn.array.get(name);
+      const fn = this.fn.array.get(name);
       return fn(str, par);
     };
     return this;

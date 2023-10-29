@@ -1,6 +1,8 @@
-import Validator from '../app.js';
-
 export default class CheckObject {
+  constructor(fn) {
+    this.fn = fn;
+  }
+
   isValid(obj) {
     for (const key in obj) {
       if (!this.paramsCheck[key].isValid(obj[key])) return false;
@@ -14,7 +16,7 @@ export default class CheckObject {
 
   test(name, par) {
     this.isValid = (str) => {
-      const fn = Validator.fn.string.get(name);
+      const fn = this.fn.string.get(name);
       return fn(str, par);
     };
     return this;

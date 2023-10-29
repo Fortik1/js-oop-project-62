@@ -1,5 +1,3 @@
-import Validator from '../app.js';
-
 const checkRange = (minNum, maxNum) => (num) => {
   const min = minNum;
   const max = maxNum;
@@ -7,8 +5,9 @@ const checkRange = (minNum, maxNum) => (num) => {
 };
 
 export default class Number {
-  constructor() {
+  constructor(fn) {
     this.isValid = () => true;
+    this.fn = fn;
   }
 
   required() {
@@ -28,7 +27,7 @@ export default class Number {
 
   test(name, par) {
     this.isValid = (str) => {
-      const fn = Validator.fn.number.get(name);
+      const fn = this.fn.number.get(name);
       return fn(str, par);
     };
     return this;

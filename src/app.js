@@ -4,31 +4,33 @@ import CheckArray from './utilit/array.js';
 import Object from './utilit/object.js';
 
 export default class Validator {
-  static fn = {
-    string: new Map(),
-    array: new Map(),
-    number: new Map(),
-    object: new Map(),
-  };
+  constructor() {
+    this.fn = {
+      string: new Map(),
+      array: new Map(),
+      number: new Map(),
+      object: new Map(),
+    };
+  }
 
   string() {
-    return new String();
+    return new String(this.fn);
   }
 
   number() {
-    return new Number();
+    return new Number(this.fn);
   }
 
   array() {
-    return new CheckArray();
+    return new CheckArray(this.fn);
   }
 
   object() {
-    return new Object();
+    return new Object(this.fn);
   }
 
   addValidator(type, name, fn) {
-    Validator.fn[type].set(name, fn);
-    return new Validator();
+    this.fn[type].set(name, fn);
+    return this;
   }
 }
