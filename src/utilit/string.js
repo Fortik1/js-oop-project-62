@@ -12,28 +12,24 @@ const checkMinLength = (lengthStr = 0) => (str = '') => {
   return str.length >= minLength;
 };
 
-const params = {
-  main: (str = '') => str === '' || str === null,
-  required: () => (str) => !!str ? typeof str === 'string': false,
-  contains: () => checkContains,
-  minLength: () => checkMinLength,
-};
-
 export default class String {
-  constructor(ValidParams = params.main) {
-    this.isValid = ValidParams;
+  constructor() {
+    this.isValid = () => true;
   }
 
   required() {
-    this.isValid = params.required();
+    this.isValid = (str) => !!str ? typeof str === 'string': false;
+    return this;
   }
 
-  contains(str) {
-    this.isValid = params.contains(str);
+  contains(str = '') {
+    this.isValid = checkContains(str);
+    return this;
   }
 
   minLength(lengthStr) {
-    return new String(params.minLength(lengthStr));
+    this.isValid = checkMinLength(lengthStr);
+    return this;
   }
 
   test(name, par) {
