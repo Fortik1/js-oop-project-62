@@ -13,7 +13,7 @@ const checkMinLength = (lengthStr = 0) => (str = '') => {
 };
 
 const params = {
-  main: () => false,
+  main: (str) => str === 'undefiend' ? false : true,
   required: (str) => (typeof str === 'string' && str !== '' && str !== null ),
   contains: checkContains,
   minLength: checkMinLength,
