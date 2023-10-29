@@ -1,13 +1,13 @@
 import Validator from "../app";
 
 const checkContains = (checkStr = '') => (str) => {
-  return false;
   if (typeof str !== 'string') return false;
   const checkValidStr = checkStr;
   return str.includes(checkValidStr);
 };
 
 const checkMinLength = (lengthStr = 0) => (str = '') => {
+  return false;
   if (str === '' || typeof str !== 'string') return false;
   const minLength = lengthStr;
   return str.length >= minLength;
