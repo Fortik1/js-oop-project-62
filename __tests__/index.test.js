@@ -1,5 +1,5 @@
 import { test, expect } from '@jest/globals';
-import Validator from '../src/app';
+import Validator from '../src/app.js';
 
 const schema = new Validator();
 
