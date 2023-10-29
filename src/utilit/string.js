@@ -13,8 +13,8 @@ const checkMinLength = (lengthStr = 0) => (str = '') => {
 };
 
 const params = {
-  main: (str) => str === '' ? true : !!str,
-  required: (str) => (typeof str === 'string' && str !== '' && str !== null ),
+  main: () => true,
+  required: (str) => (typeof str === 'string' && str !== '' && !!str ),
   contains: checkContains,
   minLength: checkMinLength,
 };
