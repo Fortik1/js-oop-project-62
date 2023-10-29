@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">64.28% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>25/25</span>
+                <span class='fraction'>18/28</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">26.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>12/12</span>
+                <span class='fraction'>4/15</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>13/13</span>
+                <span class='fraction'>12/16</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">68.18% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>20/20</span>
+                <span class='fraction'>15/22</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -113,27 +113,27 @@
 <a name='L48'></a><a href='#L48'>48</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -145,7 +145,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -159,23 +159,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Validator from "../app";
 &nbsp;
-const checkContains = (checkStr = '') =&gt; (str) =&gt; {
-  if (typeof str !== 'string') return false;
-  const checkValidStr = checkStr;
-  return str.includes(checkValidStr);
+const checkContains = (checkStr = <span class="branch-0 cbranch-no" title="branch not covered" >'')</span> =&gt; <span class="fstat-no" title="function not covered" >(s</span>tr) =&gt; {
+<span class="cstat-no" title="statement not covered" >  if (typeof str !== 'string') <span class="cstat-no" title="statement not covered" >return false;</span></span>
+  const checkValidStr = <span class="cstat-no" title="statement not covered" >checkStr;</span>
+<span class="cstat-no" title="statement not covered" >  return str.includes(checkValidStr);</span>
 };
 &nbsp;
-const checkMinLength = (lengthStr = 0) =&gt; (str = '') =&gt; {
-  if (str === '' || typeof str !== 'string') return false;
-  const minLength = lengthStr;
-  return str.length &gt;= minLength;
+const checkMinLength = (lengthStr = <span class="branch-0 cbranch-no" title="branch not covered" >0)</span> =&gt; <span class="fstat-no" title="function not covered" >(s</span>tr = <span class="branch-0 cbranch-no" title="branch not covered" >'')</span> =&gt; {
+<span class="cstat-no" title="statement not covered" >  if (str === '' || typeof str !== 'string') <span class="cstat-no" title="statement not covered" >return false;</span></span>
+  const minLength = <span class="cstat-no" title="statement not covered" >lengthStr;</span>
+<span class="cstat-no" title="statement not covered" >  return str.length &gt;= minLength;</span>
 };
 &nbsp;
 const params = {
-  main: () =&gt; true,
-  required: (str) =&gt; !!str ? typeof str === 'string': false,
-  contains: checkContains,
-  minLength: checkMinLength,
+  main: (str = '') =&gt; str === '' || str === null,
+  required: <span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(s</span>tr) =&gt; <span class="cstat-no" title="statement not covered" >!!str ? typeof str === 'string': false,</span></span>
+  contains: () =&gt; checkContains,
+  minLength: () =&gt; checkMinLength,
 };
 &nbsp;
 export default class String {
@@ -184,7 +184,7 @@ export default class String {
   }
 &nbsp;
   required() {
-    return new String(params.required);
+    this.isValid = params.required;
   }
 &nbsp;
   contains(str) {
@@ -211,7 +211,7 @@ export default class String {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-10-29T11:36:59.532Z
+                at 2023-10-29T12:03:17.887Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
