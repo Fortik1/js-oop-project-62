@@ -8,10 +8,14 @@ export default class CheckObject {
     this.isValid = (obj) => {
       if (obj === null || typeof obj !== 'object') return false;
 
-      for (const [name, value] of Object.entries(obj)) {
-        if (!this.paramsCheck[name].isValid(value)) return false;
+      try {
+        Object.entries(obj).forEach(([name, value]) => {
+          if (!this.paramsCheck[name].isValid(value)) throw new Error();
+        });
+        return true;
+      } catch (e) {
+        return false;
       }
-      return true;
     };
     this.paramsCheck = paramsCheck;
   }
