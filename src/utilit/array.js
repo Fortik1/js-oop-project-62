@@ -21,4 +21,13 @@ export default class ValidatorArray {
   sizeof(size = 0) {
     return new ValidatorArray(params.sizeof(size));
   }
+
+  test(name, par) {
+    const newFun = (par) => (str) => {
+      const param = par;
+      const fn = Validator.fn.string.get(name);
+      return fn(str, param);
+    }
+    return new String(newFun(par));
+  }
 }

@@ -27,4 +27,13 @@ export default class Number {
   range(min, max) {
     return new Number(params.range(min, max));
   }
+
+  test(name, par) {
+    const newFun = (par) => (str) => {
+      const param = par;
+      const fn = Validator.fn.string.get(name);
+      return fn(str, param);
+    }
+    return new String(newFun(par));
+  }
 }

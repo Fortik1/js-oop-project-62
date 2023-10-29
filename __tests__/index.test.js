@@ -136,3 +136,15 @@ test('checkObjectValid', () => {
   expect(object.isValid({ name: '', age: null })).toBeFalsy();
   expect(object.isValid({ name: 'kolya', age: -5 })).toBeFalsy();
 })
+
+test('checkAddValid', () => {
+  const fn = (value, start) => value.startsWith(start);
+
+  const newSchema = schema.addValidator('string', 'startsWith', fn);
+
+  const check = newSchema.string().test('startsWith', 'H');
+
+  expect(check.isValid('Hexlet')).toBeTruthy();
+
+  expect(check.isValid('exlet')).toBeFalsy();
+})

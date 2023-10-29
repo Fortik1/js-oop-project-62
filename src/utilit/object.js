@@ -9,4 +9,13 @@ export default class Object {
   shape(paramsCheck) {
     this.paramsCheck = paramsCheck;
   }
+  
+  test(name, par) {
+    const newFun = (par) => (str) => {
+      const param = par;
+      const fn = Validator.fn.string.get(name);
+      return fn(str, param);
+    }
+    return new String(newFun(par));
+  }
 }

@@ -1,3 +1,5 @@
+import Validator from "../app";
+
 const checkContains = (checkStr = '') => (str) => {
   const checkValidStr = checkStr;
   return str.includes(checkValidStr);
@@ -31,5 +33,14 @@ export default class String {
 
   minLength(lengthStr) {
     return new String(params.minLength(lengthStr));
+  }
+
+  test(name, par) {
+    const newFun = (par) => (str) => {
+      const param = par;
+      const fn = Validator.fn.string.get(name);
+      return fn(str, param);
+    }
+    return new String(newFun(par));
   }
 }
