@@ -14,7 +14,7 @@ test('checkValidString', () => {
 test('checkValidStringRequired', () => {
   const checkRequired = schema.string().required();
 
-  expect(checkRequired.isValid('')).toBeFalsy();
+  expect(!checkRequired.isValid('')).toBe(true);
   expect(checkRequired.isValid()).toBeFalsy();
   expect(checkRequired.isValid(undefined)).toBeFalsy();
   expect(!checkRequired.isValid(null)).toBe(true);
