@@ -1,6 +1,6 @@
 import String from './utilit/string.js';
 import Number from './utilit/number.js';
-import Array from './utilit/array.js';
+import CheckArray from './utilit/array.js';
 import Object from './utilit/object.js';
 
 export default class Validator {
@@ -9,7 +9,7 @@ export default class Validator {
     array: new Map(),
     number: new Map(),
     object: new Map(),
-  }
+  };
 
   string() {
     return new String();
@@ -20,7 +20,7 @@ export default class Validator {
   }
 
   array() {
-    return new Array();
+    return new CheckArray();
   }
 
   object() {

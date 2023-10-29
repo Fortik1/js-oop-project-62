@@ -1,4 +1,4 @@
-import Validator from "../app";
+import Validator from '../app';
 
 const checkContains = (checkStr) => (str) => {
   if (typeof str !== 'string') return false;
@@ -18,7 +18,7 @@ export default class String {
   }
 
   required() {
-    this.isValid = (str) => !!str ? typeof str === 'string': false;
+    this.isValid = (str) => (str ? typeof str === 'string' : false);
     return this;
   }
 
@@ -36,7 +36,7 @@ export default class String {
     this.isValid = (str) => {
       const fn = Validator.fn.string.get(name);
       return fn(str, par);
-    }
+    };
     return this;
   }
 }

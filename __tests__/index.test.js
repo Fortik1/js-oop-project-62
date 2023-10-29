@@ -101,7 +101,7 @@ test('isArrayDefault', () => {
   expect(array.isValid(null)).toBeTruthy();
   expect(array.isValid()).toBeTruthy();
   expect(array.isValid([])).toBeTruthy();
-})
+});
 
 test('checkRequiredArray', () => {
   const array = schema.array().required();
@@ -110,7 +110,7 @@ test('checkRequiredArray', () => {
   expect(array.isValid(['true'])).toBeTruthy();
 
   expect(array.isValid()).toBeFalsy();
-})
+});
 
 test('checkSizeArray', () => {
   const array = schema.array().sizeof(2);
@@ -122,7 +122,7 @@ test('checkSizeArray', () => {
 
   expect(array.isValid([''])).toBeFalsy();
   expect(array.isValid()).toBeFalsy();
-}) 
+});
 
 test('checkObjectValid', () => {
   const object = schema.object();
@@ -130,14 +130,14 @@ test('checkObjectValid', () => {
   object.shape({
     name: schema.string().required(),
     age: schema.number().positive(),
-  })
+  });
 
   expect(object.isValid({ name: 'kolya', age: 20 })).toBeTruthy();
   expect(object.isValid({ name: 'kolya', age: null })).toBeTruthy();
 
   expect(object.isValid({ name: '', age: null })).toBeFalsy();
   expect(object.isValid({ name: 'kolya', age: -5 })).toBeFalsy();
-})
+});
 
 test('checkAddValid', () => {
   const fnString = (value, start) => value.startsWith(start);
@@ -159,4 +159,4 @@ test('checkAddValid', () => {
   expect(check.isValid('exlet')).toBeFalsy();
   expect(checkArr.isValid([])).toBeFalsy();
   expect(checkNumber.isValid(1)).toBeFalsy();
-})
+});

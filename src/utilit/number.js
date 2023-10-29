@@ -1,4 +1,4 @@
-import Validator from "../app";
+import Validator from '../app';
 
 const checkRange = (minNum, maxNum) => (num) => {
   const min = minNum;
@@ -30,7 +30,7 @@ export default class Number {
     this.isValid = (str) => {
       const fn = Validator.fn.number.get(name);
       return fn(str, par);
-    }
+    };
     return this;
   }
 }

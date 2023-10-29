@@ -1,4 +1,4 @@
-import Validator from "../app";
+import Validator from '../app';
 
 export default class Object {
   isValid(obj) {
@@ -16,7 +16,7 @@ export default class Object {
     this.isValid = (str) => {
       const fn = Validator.fn.string.get(name);
       return fn(str, par);
-    }
+    };
     return this;
   }
 }
