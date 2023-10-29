@@ -66,10 +66,10 @@ test('checkDefaul', () => {
 test('checkRequiredNumber', () => {
   const required = schema.number().required();
 
-  expect(required.isValid(0)).toBeTruthy();
+  expect(required.isValid(1)).toBeTruthy();
   expect(required.isValid(2)).toBeTruthy();
-  expect(required.isValid(-2)).toBeTruthy();
 
+  expect(required.isValid(-2)).toBeFalsy();
   expect(required.isValid(null)).toBeFalsy();
   expect(required.isValid()).toBeFalsy();
   expect(required.isValid('')).toBeFalsy();
