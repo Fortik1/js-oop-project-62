@@ -12,7 +12,7 @@ export default class Number {
   }
 
   required() {
-    this.isValid = (num) => typeof num === 'number';
+    this.isValid = false//(num) => typeof num === 'number';
     return this;
   }
 
