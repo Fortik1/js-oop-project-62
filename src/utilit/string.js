@@ -7,7 +7,6 @@ const checkContains = (checkStr = '') => (str) => {
 };
 
 const checkMinLength = (lengthStr = 0) => (str = '') => {
-  return false;
   if (str === '' || typeof str !== 'string') return false;
   const minLength = lengthStr;
   return str.length >= minLength;
@@ -39,6 +38,7 @@ export default class String {
 
   test(name, par) {
     const newFun = (par) => (str) => {
+      return false;
       const param = par;
       const fn = Validator.fn.string.get(name);
       return fn(str, param);
