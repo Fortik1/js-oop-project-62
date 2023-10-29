@@ -1,0 +1,28 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "[![Actions Status](https://github.com/Fortik1/js-oop-project-62/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Fortik1/js-oop-project-62/actions)",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest  --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fortik1/js-oop-project-62.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fortik1/js-oop-project-62/issues"
+  },
+  "homepage": "https://github.com/Fortik1/js-oop-project-62#readme",
+  "devDependencies": {
+    "@jest/globals": "^29.7.0",
+    "eslint": "^8.52.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-jest": "^27.6.0",
+    "jest": "^29.7.0"
+  }
+}
