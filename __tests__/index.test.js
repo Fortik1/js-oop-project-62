@@ -1,126 +1,100 @@
 import { test, expect } from '@jest/globals';
 import Validator from '../src/app.js';
 
-test('checkValidString', () => {
-  const v = new Validator();
-  const schema = v.string();
+const schema = new Validator();
 
-  expect(schema.isValid('')).toBeTruthy();
-  expect(schema.isValid(null)).toBe(true);
-  expect(schema.isValid(undefined)).toBeTruthy();
+test('checkValidString', () => {
+  expect(schema.string().isValid('')).toBeTruthy();
+  expect(schema.string().isValid(null)).toBe(true);
+  expect(schema.string().isValid(undefined)).toBeTruthy();
 });
 
 test('checkValidStringRequired', () => {
-  const checkRequired = schema.string().required();
-
-  expect(!checkRequired.isValid('')).toBe(true);
-  expect(checkRequired.isValid()).toBeFalsy();
-  expect(checkRequired.isValid(undefined)).toBeFalsy();
-  expect(!checkRequired.isValid(null)).toBe(true);
-  expect(checkRequired.isValid('str')).toBeTruthy();
-  expect(checkRequired.isValid('is valid string')).toBeTruthy();
+  expect(!schema.string().required().isValid('')).toBe(true);
+  expect(schema.string().required().isValid()).toBeFalsy();
+  expect(schema.string().required().isValid(undefined)).toBeFalsy();
+  expect(!schema.string().required().isValid(null)).toBe(true);
+  expect(schema.string().required().isValid('str')).toBeTruthy();
+  expect(schema.string().required().isValid('is valid string')).toBeTruthy();
 });
 
 test('checkValidStringContains', () => {
-  const string = schema.string();
-  const expected1 = string.contains('World').isValid('Hello, World!');
-  const expected2 = string.contains('Hello').isValid('Hello, World!');
-  const expected3 = string.contains('').isValid('Hello, World!');
-  const expected4 = string.contains().isValid('Hello, World!');
+  const expected1 = schema.string().contains('World').isValid('Hello, World!');
+  const expected2 = schema.string().contains('Hello').isValid('Hello, World!');
+  const expected3 = schema.string().contains('').isValid('Hello, World!');
+  const expected4 = schema.string().contains().isValid('Hello, World!');
 
   expect(expected1).toBeTruthy();
   expect(expected2).toBeTruthy();
   expect(expected3).toBeTruthy();
   expect(expected4).toBeTruthy();
 
-  const containsFaild = string.contains('Hello, World!');
-
-  expect(containsFaild.isValid('Fail')).toBeFalsy();
-  expect(containsFaild.isValid('Hello')).toBeFalsy();
-  expect(!containsFaild.isValid('')).toBe(true);
-  expect(!containsFaild.isValid(null)).toBeTruthy();
+  expect(schema.string().contains('Hello, World!').isValid('Fail')).toBeFalsy();
+  expect(schema.string().contains('Hello, World!').isValid('Hello')).toBeFalsy();
+  expect(!schema.string().contains('Hello, World!').isValid('')).toBe(true);
+  expect(!schema.string().contains('Hello, World!').isValid(null)).toBeTruthy();
 });
 
 test('checkMinLength', () => {
-  const check = schema.string().minLength(5);
 
-  expect(check.isValid('fail')).toBeFalsy();
-  expect(check.isValid('')).toBeFalsy();
-  expect(check.isValid()).toBeFalsy();
+  expect(schema.string().minLength(5).isValid('fail')).toBeFalsy();
+  expect(schema.string().minLength(5).isValid('')).toBeFalsy();
+  expect(schema.string().minLength(5).isValid()).toBeFalsy();
 
-  const defaultLength = schema.string().minLength();
-
-  expect(defaultLength.isValid('TestSucces')).toBeTruthy();
+  expect(schema.string().minLength().isValid('TestSucces')).toBeTruthy();
 });
 
 test('checkDefaul', () => {
-  const number = schema.number();
-
-  expect(number.isValid(5)).toBeTruthy();
-  expect(number.isValid(NaN)).toBeTruthy();
-  expect(number.isValid(null)).toBeTruthy();
-  expect(number.isValid()).toBeTruthy();
+  expect(schema.number().isValid(5)).toBeTruthy();
+  expect(schema.number().isValid(NaN)).toBeTruthy();
+  expect(schema.number().isValid(null)).toBeTruthy();
+  expect(schema.number().isValid()).toBeTruthy();
 });
 
 test('checkRequiredNumber', () => {
-  const required = schema.number().required();
+  expect(schema.number().required().isValid(1)).toBeTruthy();
+  expect(schema.number().required().isValid(2)).toBeTruthy();
 
-  expect(required.isValid(1)).toBeTruthy();
-  expect(required.isValid(2)).toBeTruthy();
-
-  expect(required.isValid(-2)).toBeFalsy();
-  expect(required.isValid(null)).toBeFalsy();
-  expect(required.isValid()).toBeFalsy();
-  expect(required.isValid('')).toBeFalsy();
+  expect(schema.number().required().isValid(-2)).toBeFalsy();
+  expect(schema.number().required().isValid(null)).toBeFalsy();
+  expect(schema.number().required().isValid()).toBeFalsy();
+  expect(schema.number().required().isValid('')).toBeFalsy();
 });
 
 test('checkPositiveNumber', () => {
-  const positive = schema.number().positive();
+  expect(schema.number().positive().isValid(10)).toBeTruthy();
 
-  expect(positive.isValid(10)).toBeTruthy();
-
-  expect(positive.isValid(-10)).toBeFalsy();
-  expect(positive.isValid(0)).toBeFalsy();
+  expect(schema.number().positive().isValid(-10)).toBeFalsy();
+  expect(schema.number().positive().isValid(0)).toBeFalsy();
 });
 
 test('checkRangeNumber', () => {
-  const range = schema.number().range(-5, 2);
+  expect(schema.number().range(-5, 2).isValid(0)).toBeTruthy();
+  expect(schema.number().range(-5, 2).isValid(-2)).toBeTruthy();
+  expect(schema.number().range(-5, 2).isValid(2)).toBeTruthy();
 
-  expect(range.isValid(0)).toBeTruthy();
-  expect(range.isValid(-2)).toBeTruthy();
-  expect(range.isValid(2)).toBeTruthy();
-
-  expect(range.isValid(-6)).toBeFalsy();
-  expect(range.isValid(3)).toBeFalsy();
+  expect(schema.number().range(-5, 2).isValid(-6)).toBeFalsy();
+  expect(schema.number().range(-5, 2).isValid(3)).toBeFalsy();
 });
 
 test('isArrayDefault', () => {
-  const array = schema.array();
-
-  expect(array.isValid(null)).toBeTruthy();
-  expect(array.isValid()).toBeTruthy();
-  expect(array.isValid([])).toBeTruthy();
+  expect(schema.array().isValid(null)).toBeTruthy();
+  expect(schema.array().isValid()).toBeTruthy();
+  expect(schema.array().isValid([])).toBeTruthy();
 });
 
 test('checkRequiredArray', () => {
-  const array = schema.array().required();
+  expect(schema.array().required().isValid([])).toBeTruthy();
+  expect(schema.array().required().isValid(['true'])).toBeTruthy();
 
-  expect(array.isValid([])).toBeTruthy();
-  expect(array.isValid(['true'])).toBeTruthy();
-
-  expect(array.isValid()).toBeFalsy();
+  expect(schema.array().required().isValid()).toBeFalsy();
 });
 
 test('checkSizeArray', () => {
-  const array = schema.array().sizeof(2);
-  const arraySizeZero = schema.array().sizeof();
-
-  expect(arraySizeZero.isValid([''])).toBeFalsy();
-
-  expect(array.isValid(['', ''])).toBeTruthy();
-
-  expect(array.isValid([''])).toBeFalsy();
-  expect(array.isValid()).toBeFalsy();
+  expect(schema.array().sizeof(2).isValid(['', ''])).toBeTruthy();
+  expect(schema.array().sizeof().isValid([''])).toBeFalsy();
+  expect(schema.array().sizeof(2).isValid([''])).toBeFalsy();
+  expect(schema.array().sizeof(2).isValid()).toBeFalsy();
 });
 
 test('checkObjectValid', () => {
