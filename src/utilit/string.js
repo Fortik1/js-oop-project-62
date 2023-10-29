@@ -25,7 +25,7 @@ export default class String {
   }
 
   required() {
-    this.isValid = params.required;
+    this.isValid = params.required();
   }
 
   contains(str) {
