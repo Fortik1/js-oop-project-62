@@ -1,6 +1,7 @@
 import Validator from "../app";
 
 const checkContains = (checkStr = '') => (str) => {
+  if (typeof str !== 'string') return false;
   const checkValidStr = checkStr;
   return str.includes(checkValidStr);
 };
